@@ -61,7 +61,7 @@ The registration form for new users to create an account.
 ## 🛠️ Tech Stack
 * **Backend:** Python (**Flask**  given the `127.0.0.1:5000` default port).
 * **Frontend:** HTML, CSS, JavaScript.
-* **Database:** [**Specify your database here, e.g., SQLite, PostgreSQL, MySQL**]
+* **Database:** PostgreSQL
 ---
 ## 💻 Installation and Setup
 ### Prerequisites
@@ -100,5 +100,6 @@ For questions or feedback, please reach out to:
 * **Developer:** Krishna Verma
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Email:** [krishna1290verma@gmail.com]
+
 
 
