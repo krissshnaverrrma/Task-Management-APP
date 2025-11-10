@@ -258,7 +258,7 @@ def reset_security(user_id):
     user = User.query.get_or_404(user_id)
     if request.method == 'POST':
         submitted_answer = request.form.get('answer')
-        if bcrypt.check_password_hash(user.security_answer_hash, submitted_answer
+        if bcrypt.check_password_hash(user.security_answer_hash, submitted_answer):
             return redirect(url_for('reset_password_new', user_id=user.id))
         else:
             flash('Incorrect security answer.', 'danger')
