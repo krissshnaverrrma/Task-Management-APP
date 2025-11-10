@@ -112,4 +112,8 @@ Access the running application in your browser at:
 For questions or feedback, please reach out to:
 * **Developer:** Krishna Verma
 * **GitHub:** [https://github.com/krissshnaverrrma]
+<<<<<<< Updated upstream
 * **Email:** [krishna1290verma@gmail.com]
+=======
+* **Email:** [krishna1290verma@gmail.com]
+>>>>>>> Stashed changes
