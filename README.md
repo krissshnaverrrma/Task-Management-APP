@@ -15,6 +15,8 @@ The application is hosted locally at **`http://127.0.0.1:5000/`** during develop
 
 Here's a visual walkthrough of the main user features and application states:
 
+### 1.Landing page of the Task Management APP.
+
 ![Landing page of the Task Management APP.](assets/1.jpg)
 
 ### 2. Sign-In to Your Account
@@ -100,6 +102,7 @@ For questions or feedback, please reach out to:
 * **Developer:** Krishna Verma
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Email:** [krishna1290verma@gmail.com]
+
 
 
 
