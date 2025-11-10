@@ -100,7 +100,7 @@ body {
 .landing-btn {
     background-color: #000000; 
     color: white;
-    padding: 12px 35px; 
+    padding: 16px 40px; 
     text-decoration: none;
     font-size: 1.2em;
     font-weight: bold;
@@ -308,7 +308,7 @@ body {
     box-sizing: border-box; 
 }
 .custom-file-label:hover {
-    background-color: #333333; 
+    background-color: #333333;
 }
 .remove-btn-small {
     background-color: #dc3545;
@@ -474,11 +474,11 @@ body {
     margin-bottom: 15px;
 }
 .profile-header h1 {
-    color: #000000; /* Replaced #90c341 with black */
+    color: #000000; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 .edit-btn {
-    background-color: #000000; /* Replaced #90c341 with black */
+    background-color: #000000; 
     color: white;
     font-weight: bold;
     border-radius: 6px; 
@@ -493,7 +493,7 @@ body {
     width: 100%;
 }
 .edit-btn:hover {
-    background-color: #333333; /* Replaced #7aa53a with dark grey */
+    background-color: #333333; 
     color: white;              
 }
 .edit-button-container {
@@ -514,17 +514,18 @@ body {
 }
 .form-link-button {
     display: inline-block;
-    color: #000000; 
+    color: white; 
     text-decoration: none;
     font-size: 0.95em; 
     font-weight: bold;
     padding: 8px 15px; 
     border: 1px solid #000000; 
+    background-color: #000000; 
     border-radius: 5px;
     margin: 5px; 
     transition: all 0.2s ease;
 }
 .form-link-button:hover {
-    background-color: rgba(0, 0, 0, 0.1); 
+    background-color: #333333; 
     color: white;
 }

@@ -26,8 +26,12 @@
             <input type="password" id="security_answer" name="security_answer" placeholder="Provide a secure answer" required>
             <input type="submit" value="Register">
         </form>
-        <hr style="border-color: rgba(255,255,255,0.2); margin-top: 20px;">
-        <p>Already have an account? <a href="{{ url_for('login') }}">Sign in here</a></p>
+        <div class="form-footer">
+            <p>
+                Already have an account? 
+                <a href="{{ url_for('login') }}" class="form-link-button">Sign in here</a>
+            </p>
+        </div>
     </div>
 </div>
 {% endblock %}
