@@ -9,7 +9,9 @@
         <form method="POST" action="{{ url_for('update_profile') }}" enctype="multipart/form-data">  
             <div class="profile-img-container">
                 {% set image_file = 'profile_pics/' + current_user.profile_image %}
-                <img id="profile-pic-preview" src="{{ url_for('static', filename=image_file) }}?t={{ now().timestamp() }}" alt="Profile Picture" class="profile-img">
+                <img id="profile-pic-preview" 
+                     src="{{ url_for('static', filename=image_file) }}?v={{ current_user.image_version }}" 
+                     alt="Profile Picture" class="profile-img">
             </div>
             <div id="file-inputs" class="file-action-group">
                 <div class="file-upload-container">
@@ -49,7 +51,7 @@
     </div>
 </div> 
 <script>
-    function previewFile() {
+    function previewFile(){
         const preview = document.getElementById('profile-pic-preview');
         const file = document.getElementById('picture').files[0];
         const reader = new FileReader();
