@@ -1,4 +1,9 @@
 import os
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
+import pathlib
+from pathlib import Path
+Path(app.config['UPLOAD_FOLDER']).mkdir(parents=True, exist_ok=True)
 from datetime import datetime, timedelta 
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
@@ -53,17 +58,18 @@ class ContactMessage(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-def delete_picture(filename):
-    if filename != 'default.jpg':
-
-        if os.path.exists(old_picture_path):
-            os.remove(old_picture_path)
 def save_picture(picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(picture.filename)
     picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.config['UPLOAD_FOLDER'], picture_fn)
     picture.save(picture_path)
     return picture_fn
+def delete_picture(filename):
+    if filename != 'default.jpg':
+        picture_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        if os.path.exists(picture_path):
+            os.remove(picture_path)
 @app.context_processor
 def inject_now():
     return {'now': datetime.utcnow}
