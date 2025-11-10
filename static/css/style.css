@@ -48,7 +48,7 @@ body {
     gap: 8px;
 }
 .nav-links a:hover {
-    color: #90c341;
+    color: #000000; 
 }
 .bottom-bar {
     position: fixed;
@@ -71,7 +71,7 @@ body {
     object-fit: cover;
     border-radius: 50%; 
     margin-right: 8px;
-    border: 2px solid #90c341; 
+    border: 2px solid #000000; 
 }
 .nav-profile-link {
     display: flex; 
@@ -98,10 +98,9 @@ body {
     line-height: 1.6;
 }
 .landing-btn {
-    display: inline-block;
-    background-color: #90c341;
+    background-color: #000000; 
     color: white;
-    padding: 12px 35px; /* Reduced height */
+    padding: 12px 35px; 
     text-decoration: none;
     font-size: 1.2em;
     font-weight: bold;
@@ -110,7 +109,7 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .landing-btn:hover {
-    background-color: #7aa53a;
+    background-color: #333333; 
     transform: scale(1.05);
 }
 .content {
@@ -154,13 +153,13 @@ body {
 .center-content input[type="text"],
 .center-content input[type="email"],
 .center-content input[type="tel"],
-.center-content select, /* Added select for security questions */
+.center-content select, 
 .center-content textarea,
 .content input[type="text"],
 .content input[type="email"],
 .content input[type="password"],
 .content input[type="date"],
-.content select /* Added select for security questions */
+.content select 
 { 
     color: white; 
     background-color: rgba(255, 255, 255, 0.1); 
@@ -168,9 +167,16 @@ body {
     border-radius: 6px;
     padding: 12px; 
     width: 100%; 
-    margin-bottom: 20px; /* Added margin for vertical spacing */
+    margin-bottom: 20px; 
     box-sizing: border-box; 
-    display: block; /* Ensures inputs/selects take full width nicely */
+    display: block; 
+}
+.center-content select {
+    color: white !important; 
+}
+.center-content select option {
+    color: black; 
+    background-color: white; 
 }
 .content p {
     margin-bottom: 25px; 
@@ -180,22 +186,22 @@ body {
     height: 100px;
 }
 .center-content form label {
-    display: block; /* Ensures label is on its own line */
-    margin-bottom: 5px; /* Added margin to separate label from input */
-    font-weight: bold; /* Made labels bold for better readability */
+    display: block; 
+    margin-bottom: 5px; 
+    font-weight: bold; 
 }
 ::placeholder { color: #ccc; opacity: 1; }
 .content input:focus,
 .center-content input:focus,
 .center-content textarea:focus,
-.content select:focus /* Added select */
+.content select:focus 
 {
-    border-color: #90c341;
-    box-shadow: 0 0 0 0.2rem rgba(144, 195, 65, 0.25);
+    border-color: #000000; 
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25); 
     outline: none;
 }
 .content input[type="submit"] {
-    background-color: #90c341;
+    background-color: #000000; 
     color: white;
     font-weight: bold;
     border-radius: 6px;
@@ -204,14 +210,14 @@ body {
     border: none;
     cursor: pointer;
     width: 100%;
-    margin-top: 15px; /* Added margin-top to separate button */
+    margin-top: 15px; 
 }
 .content input[type="submit"]:hover {
-    background-color: #7aa53a;
+    background-color: #333333; 
 }
 .center-content form {
     margin-bottom: 30px; 
-    padding-top: 20px; /* Added padding for separation from top border/alerts */
+    padding-top: 20px; 
 }
 .center-content { 
     text-align: left; 
@@ -229,7 +235,7 @@ body {
     font-weight: normal; 
     color: #eee; 
     margin: 0; 
-    display: block; /* Ensure grid items don't break layout */
+    display: block; 
 }
 .profile-form-grid input {
     width: 100%; 
@@ -287,7 +293,7 @@ body {
     z-index: 5;
 }
 .custom-file-label {
-    background-color: #90c341; 
+    background-color: #000000; 
     color: white;
     font-weight: bold;
     border-radius: 6px;
@@ -302,7 +308,7 @@ body {
     box-sizing: border-box; 
 }
 .custom-file-label:hover {
-    background-color: #7aa53a;
+    background-color: #333333; 
 }
 .remove-btn-small {
     background-color: #dc3545;
@@ -326,9 +332,6 @@ body {
     margin: 20px auto 0 auto;
 }
 .discard-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #6c757d; 
     color: white;
     font-weight: bold;
@@ -405,15 +408,15 @@ body {
     width: 90%;
     max-width: 600px;
     margin: 20px auto; 
-    text-align: center; /* Center alert itself */
+    text-align: center; 
 }
 .alert {
     padding: 15px;
-    margin-bottom: 25px; /* Increased margin-bottom */
+    margin-bottom: 25px; 
     border: 1px solid transparent;
     border-radius: 8px;
     color: #333;
-    max-width: 400px; /* Constrain width */
+    max-width: 400px; 
     margin-left: auto;
     margin-right: auto;
 }
@@ -471,11 +474,11 @@ body {
     margin-bottom: 15px;
 }
 .profile-header h1 {
-    color: #90c341; 
+    color: #000000; /* Replaced #90c341 with black */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 .edit-btn {
-    background-color: #90c341; 
+    background-color: #000000; /* Replaced #90c341 with black */
     color: white;
     font-weight: bold;
     border-radius: 6px; 
@@ -490,7 +493,7 @@ body {
     width: 100%;
 }
 .edit-btn:hover {
-    background-color: #7aa53a;
+    background-color: #333333; /* Replaced #7aa53a with dark grey */
     color: white;              
 }
 .edit-button-container {
@@ -503,4 +506,25 @@ body {
 .edit-button-container .edit-btn {
     width: 100%;
     justify-content: center;
+}
+.form-footer {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.form-link-button {
+    display: inline-block;
+    color: #000000; 
+    text-decoration: none;
+    font-size: 0.95em; 
+    font-weight: bold;
+    padding: 8px 15px; 
+    border: 1px solid #000000; 
+    border-radius: 5px;
+    margin: 5px; 
+    transition: all 0.2s ease;
+}
+.form-link-button:hover {
+    background-color: rgba(0, 0, 0, 0.1); 
+    color: white;
 }
