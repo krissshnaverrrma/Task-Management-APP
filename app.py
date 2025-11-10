@@ -11,18 +11,14 @@ import random
 from pathlib import Path
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
-
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/profile_pics")
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-
 db_uri = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
-
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login_manager = LoginManager(app)
@@ -38,6 +34,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150), nullable=False)
     profile_image = db.Column(db.String(20), nullable=False, default='default.jpg')
     image_version = db.Column(db.Integer, default=1) 
+    security_question = db.Column(db.String(150), nullable=True)
+    security_answer_hash = db.Column(db.String(150), nullable=True)
     tasks = db.relationship('Task', backref='author', lazy=True)
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -48,7 +46,6 @@ class Task(db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
 def save_picture(picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(picture.filename)
@@ -56,21 +53,17 @@ def save_picture(picture):
     picture_path = os.path.join(app.config['UPLOAD_FOLDER'], picture_fn)
     picture.save(picture_path)
     return picture_fn
-
 def delete_picture(filename):
     if filename != 'default.jpg':
         picture_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         if os.path.exists(picture_path):
             os.remove(picture_path)
-
 @app.context_processor
 def inject_now():
     return {'now': datetime.utcnow}
-
 @app.route('/')
 def index():
     return render_template('landing.html')
-
 @app.route('/tasks', methods=['GET', 'POST'])
 @login_required 
 def tasks():
@@ -101,6 +94,13 @@ def register():
         email = request.form.get('email')
         plain_text_password = request.form.get('password')
         username = request.form.get('username')
+        security_question = request.form.get('security_question')
+        security_answer = request.form.get('security_answer')
+        if security_answer and security_question:
+            hashed_answer = bcrypt.generate_password_hash(security_answer).decode('utf-8')
+        else:
+            flash('Please select a security question and provide an answer.', 'danger')
+            return redirect(url_for('register'))
         existing_user_email = User.query.filter_by(email=email).first()
         existing_user_username = User.query.filter_by(username=username).first()
         if existing_user_email:
@@ -108,7 +108,7 @@ def register():
             return redirect(url_for('login')) 
         if existing_user_username:
             flash('That username is already taken. Please choose another.', 'danger')
-            return redirect(url_for('register')) 
+            return redirect(url_for('register'))   
         hashed_password = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
         new_user = User(
             username=username, 
@@ -117,15 +117,15 @@ def register():
             email=email, 
             password=hashed_password, 
             profile_image='default.jpg',
-            image_version=int(time.time()), 
+            image_version=int(time.time()),
+            security_question=security_question,         
+            security_answer_hash=hashed_answer,        
         ) 
         db.session.add(new_user)
         db.session.commit()
-        
         flash('Account created successfully! Please sign in.', 'success')
         return redirect(url_for('login'))
     return render_template('register.html')
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -147,12 +147,10 @@ def login():
     if not current_user.is_authenticated and request.args.get('next'):
         flash('Please sign in to access that page.', 'info') 
     return render_template('login.html') 
-
 @app.route('/profile', methods=['GET']) 
 @login_required
 def profile():
     return render_template('profile.html')
-
 @app.route('/update_profile', methods=['GET', 'POST'])
 @login_required
 def update_profile():
@@ -168,38 +166,31 @@ def update_profile():
         elif 'save_changes' in request.form:
             new_username = request.form.get('username')
             new_fullname = request.form.get('fullname')
-            new_phone = request.form.get('phone')
-            
+            new_phone = request.form.get('phone') 
             if new_username != current_user.username:
                 existing_user = User.query.filter_by(username=new_username).first()
                 if existing_user:
                     flash('That username is already taken. Please choose another.', 'danger')
                     return redirect(url_for('update_profile')) 
-                current_user.username = new_username
-                
+                current_user.username = new_username  
             if 'picture' in request.files and request.files['picture'].filename != '':
                 delete_picture(current_user.profile_image) 
                 picture = request.files['picture']
                 filename = save_picture(picture)
                 current_user.profile_image = filename 
-                current_user.image_version = int(time.time())
-                
+                current_user.image_version = int(time.time())    
             current_user.fullname = new_fullname
             current_user.phone = new_phone
-            
             db.session.commit()
             flash('Your profile information has been updated successfully!', 'success')
-            return redirect(url_for('profile'))
-            
+            return redirect(url_for('profile'))     
     return render_template('update_profile.html')
-
 @app.route('/logout')
 @login_required 
 def logout():
     logout_user()
     flash('You have been logged out.', 'info')
     return redirect(url_for('index'))
-
 @app.route('/delete_account', methods=['POST'])
 @login_required
 def delete_account():
@@ -211,7 +202,6 @@ def delete_account():
     db.session.commit()
     flash('Your account and all associated tasks have been permanently deleted.', 'info')
     return redirect(url_for('index'))
-
 @app.route('/delete/<int:task_id>')
 @login_required 
 def delete_task(task_id):
@@ -226,7 +216,6 @@ def delete_task(task_id):
     except:
         flash('There was an issue deleting your task.', 'danger')
     return redirect(url_for('tasks'))
-
 @app.route('/complete/<int:task_id>')
 @login_required 
 def complete_task(task_id):
@@ -241,7 +230,6 @@ def complete_task(task_id):
     except:
         flash('There was an issue updating your task.', 'danger')
     return redirect(url_for('tasks'))
-
 @app.route('/contact', methods=['GET', 'POST'])
 @login_required 
 def contact():
@@ -252,3 +240,39 @@ def contact():
         flash(f'Thank you, {name}! Your message has been noted.', 'success')
         return redirect(url_for('contact'))
     return render_template('contact.html')
+@app.route('/forgot_password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        identifier = request.form.get('identifier') 
+        user = User.query.filter(
+            (User.email == identifier) | (User.username == identifier)
+        ).first()
+        if user:
+            return redirect(url_for('reset_security', user_id=user.id))
+        else:
+            flash('User not found. Please check your email or username.', 'danger')
+            return redirect(url_for('forgot_password'))
+    return render_template('forgot_password.html')
+@app.route('/reset_security/<int:user_id>', methods=['GET', 'POST'])
+def reset_security(user_id):
+    user = User.query.get_or_404(user_id)
+    if request.method == 'POST':
+        submitted_answer = request.form.get('answer')
+        if bcrypt.check_password_hash(user.security_answer_hash, submitted_answer
+            return redirect(url_for('reset_password_new', user_id=user.id))
+        else:
+            flash('Incorrect security answer.', 'danger')
+            return redirect(url_for('reset_security', user_id=user.id))
+    return render_template('reset_security.html', 
+                           user_id=user.id, 
+                           question=user.security_question)
+@app.route('/reset_password_new/<int:user_id>', methods=['GET', 'POST'])
+def reset_password_new(user_id):
+    user = User.query.get_or_404(user_id)
+    if request.method == 'POST':
+        new_password = request.form.get('password')
+        user.password = bcrypt.generate_password_hash(new_password).decode('utf-8')
+        db.session.commit()
+        flash('Your password has been reset successfully! Please sign in.', 'success')
+        return redirect(url_for('login'))
+    return render_template('reset_password_new.html', user_id=user.id)

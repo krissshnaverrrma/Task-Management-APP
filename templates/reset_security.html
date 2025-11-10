@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Security Question - Task Management App{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="center-content">
+        <h1>Security Check</h1>
+        <p>Please answer your security question to continue the password reset.</p>
+        <form method="POST" action="{{ url_for('reset_security', user_id=user_id) }}">
+            <label for="answer">Question: {{ question }}</label>
+            <input type="password" id="answer" name="answer" required>
+            <input type="submit" value="Verify Answer">
+        </form>
+    </div>
+</div>
+{% endblock %}
