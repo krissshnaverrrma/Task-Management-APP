@@ -6,30 +6,23 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, login_user, UserMixin, current_user, logout_user, login_required
 from flask_bcrypt import Bcrypt
-from itsdangerous import URLSafeTimedSerializer, SignatureExpired, BadTimeSignature
-from flask_mail import Mail, Message
-from dotenv import load_dotenv
-load_dotenv()
 import secrets
 import random 
 from pathlib import Path
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SECRET_KEY'] = 'd56f6dc9c2c6a958b676fa420ee7bec15086e310b4f39177ea1a552c051b4567'
-app.config['UPLOAD_FOLDER'] = '/tmp/profile_pics'
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'krishna1290verma@gmail.com' 
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-mail = Mail(app)
-s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/profile_pics")
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
 db_uri = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login_manager = LoginManager(app)
@@ -44,7 +37,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
     profile_image = db.Column(db.String(20), nullable=False, default='default.jpg')
-    # --- FIX 1: Add image_version column for cache busting ---
     image_version = db.Column(db.Integer, default=1) 
     tasks = db.relationship('Task', backref='author', lazy=True)
 class Task(db.Model):
@@ -53,14 +45,6 @@ class Task(db.Model):
     completed = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     due_date = db.Column(db.DateTime, nullable=True)
-
-class ContactMessage(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(150), nullable=False)
-    message = db.Column(db.Text, nullable=False) 
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow) 
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -133,25 +117,11 @@ def register():
             email=email, 
             password=hashed_password, 
             profile_image='default.jpg',
-            image_version=int(time.time()), # Initialize version on registration
+            image_version=int(time.time()), 
         ) 
         db.session.add(new_user)
         db.session.commit()
-        try:
-            msg_title = f"Welcome to Task Management App, {new_user.username}!"
-            sender = app.config.get('MAIL_USERNAME')
-            msg = Message(msg_title, sender=sender, recipients=[new_user.email])
-            msg.body = f"""
-            Hello {new_user.fullname},
-            Welcome aboard the Task Management System! 🎉
-            Your account is now fully set up. You can log in using your registered username/email and password to start creating and tracking your tasks right away.
-            We're excited to help you stay organized and productive!
-            Best regards,
-            The Task Management App Team
-            """
-            mail.send(msg)
-        except Exception as e:
-            print(f"WELCOME EMAIL FAILED: {e}")
+        
         flash('Account created successfully! Please sign in.', 'success')
         return redirect(url_for('login'))
     return render_template('register.html')
@@ -191,7 +161,6 @@ def update_profile():
             if current_user.profile_image != 'default.jpg':
                 delete_picture(current_user.profile_image)
                 current_user.profile_image = 'default.jpg'
-                # --- Update version when photo is removed too! ---
                 current_user.image_version = int(time.time())
                 db.session.commit()
                 flash('Profile photo has been removed.', 'info')
@@ -201,7 +170,6 @@ def update_profile():
             new_fullname = request.form.get('fullname')
             new_phone = request.form.get('phone')
             
-            # --- Check and update username ---
             if new_username != current_user.username:
                 existing_user = User.query.filter_by(username=new_username).first()
                 if existing_user:
@@ -209,17 +177,13 @@ def update_profile():
                     return redirect(url_for('update_profile')) 
                 current_user.username = new_username
                 
-            # --- Check and update profile picture ---
             if 'picture' in request.files and request.files['picture'].filename != '':
                 delete_picture(current_user.profile_image) 
                 picture = request.files['picture']
                 filename = save_picture(picture)
                 current_user.profile_image = filename 
-                
-                # --- FIX 2: Update the cache-busting version on new photo upload ---
                 current_user.image_version = int(time.time())
                 
-            # --- Update other fields ---
             current_user.fullname = new_fullname
             current_user.phone = new_phone
             
@@ -285,78 +249,6 @@ def contact():
         name = request.form.get('name')
         email = request.form.get('email')
         message_content = request.form.get('message')
-        new_message = ContactMessage(name=name, email=email, message=message_content)
-        db.session.add(new_message)
-        db.session.commit()
-        try:
-            msg_title = "We've Received Your Message!"
-            sender = app.config.get('MAIL_USERNAME')
-            msg = Message(msg_title, sender=sender, recipients=[email]) 
-            msg.body = f"""
-            Hello {name},
-            Thank you for contacting us at Task Tracker! 
-            We have received your message and will get back to you as soon as possible.
-            Your message:
-            "{message_content}"
-            Best,
-            The Task Tracker Team
-            """
-            mail.send(msg)
-        except Exception as e:
-            print(f"CONTACT EMAIL FAILED: {e}")
-            flash(f'Thank you, {name}! Your message has been saved (but confirmation email failed).', 'success')
-            return redirect(url_for('contact'))
-        flash(f'Thank you, {name}! Your message has been saved and a confirmation email was sent.', 'success')
+        flash(f'Thank you, {name}! Your message has been noted.', 'success')
         return redirect(url_for('contact'))
     return render_template('contact.html')
-
-@app.route('/forgot_password', methods=['GET', 'POST'])
-def forgot_password():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        user = User.query.filter_by(email=email).first()
-        if user:
-            token = s.dumps(user.email, salt='password-reset-salt')
-            reset_url = url_for('reset_password', token=token, _external=True)
-            msg_title = "Password Reset Request for Task Tracker"
-            sender = app.config.get('MAIL_USERNAME')
-            msg = Message(msg_title, sender=sender, recipients=[user.email])
-            msg.body = f"""
-            Hello {user.fullname},
-            To reset your password, please click the following link:
-            {reset_url}
-            If you did not make this request, please ignore this email.
-            This link will expire in 1 hour.
-            Best,
-            The Task Tracker Team
-            """
-            try:
-                mail.send(msg)
-                flash('A password reset link has been sent to your email.', 'success')
-            except Exception as e:
-                print(f"PASSWORD RESET EMAIL FAILED: {e}")
-                flash('There was an error sending the email. Please check your terminal for details.', 'danger')
-            return redirect(url_for('forgot_password'))
-        else:
-            flash('Email not found.', 'danger')
-    return render_template('forgot_password.html')
-
-@app.route('/reset_password/<token>', methods=['GET', 'POST'])
-def reset_password(token):
-    try:
-        email = s.loads(token, salt='password-reset-salt', max_age=3600)
-    except SignatureExpired:
-        flash('The password reset link has expired.', 'danger')
-        return redirect(url_for('login'))
-    except (BadTimeSignature, Exception):
-        flash('Invalid password reset link.', 'danger')
-        return redirect(url_for('login'))
-    if request.method == 'POST':
-        new_password = request.form.get('password')
-        hashed_password = bcrypt.generate_password_hash(new_password).decode('utf-8')
-        user = User.query.filter_by(email=email).first()
-        user.password = hashed_password
-        db.session.commit()
-        flash('Your password has been reset successfully! You can now sign in.', 'success')
-        return redirect(url_for('login'))
-    return render_template('reset_password.html', token=token)
