@@ -154,11 +154,13 @@ body {
 .center-content input[type="text"],
 .center-content input[type="email"],
 .center-content input[type="tel"],
+.center-content select, /* Added select for security questions */
 .center-content textarea,
 .content input[type="text"],
 .content input[type="email"],
 .content input[type="password"],
-.content input[type="date"]
+.content input[type="date"],
+.content select /* Added select for security questions */
 { 
     color: white; 
     background-color: rgba(255, 255, 255, 0.1); 
@@ -166,8 +168,9 @@ body {
     border-radius: 6px;
     padding: 12px; 
     width: 100%; 
-    margin-bottom: 0; 
+    margin-bottom: 20px; /* Added margin for vertical spacing */
     box-sizing: border-box; 
+    display: block; /* Ensures inputs/selects take full width nicely */
 }
 .content p {
     margin-bottom: 25px; 
@@ -176,10 +179,17 @@ body {
     margin-bottom: 20px; 
     height: 100px;
 }
+.center-content form label {
+    display: block; /* Ensures label is on its own line */
+    margin-bottom: 5px; /* Added margin to separate label from input */
+    font-weight: bold; /* Made labels bold for better readability */
+}
 ::placeholder { color: #ccc; opacity: 1; }
 .content input:focus,
 .center-content input:focus,
-.center-content textarea:focus {
+.center-content textarea:focus,
+.content select:focus /* Added select */
+{
     border-color: #90c341;
     box-shadow: 0 0 0 0.2rem rgba(144, 195, 65, 0.25);
     outline: none;
@@ -194,12 +204,14 @@ body {
     border: none;
     cursor: pointer;
     width: 100%;
+    margin-top: 15px; /* Added margin-top to separate button */
 }
 .content input[type="submit"]:hover {
     background-color: #7aa53a;
 }
 .center-content form {
     margin-bottom: 30px; 
+    padding-top: 20px; /* Added padding for separation from top border/alerts */
 }
 .center-content { 
     text-align: left; 
@@ -217,6 +229,7 @@ body {
     font-weight: normal; 
     color: #eee; 
     margin: 0; 
+    display: block; /* Ensure grid items don't break layout */
 }
 .profile-form-grid input {
     width: 100%; 
@@ -392,13 +405,17 @@ body {
     width: 90%;
     max-width: 600px;
     margin: 20px auto; 
+    text-align: center; /* Center alert itself */
 }
 .alert {
     padding: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Increased margin-bottom */
     border: 1px solid transparent;
     border-radius: 8px;
     color: #333;
+    max-width: 400px; /* Constrain width */
+    margin-left: auto;
+    margin-right: auto;
 }
 .alert-success {
     color: #155724;
