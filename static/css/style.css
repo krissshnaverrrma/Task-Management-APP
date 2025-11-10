@@ -96,16 +96,17 @@ body {
     max-width: 600px;
     margin: 10px auto;
     line-height: 1.6;
+    margin-bottom: 40px; 
 }
 .landing-btn {
     background-color: #000000; 
     color: white;
-    padding: 20px 50px; 
+    padding: 16px 40px; 
     text-decoration: none;
-    font-size: 1.3em; 
+    font-size: 1.2em;
     font-weight: bold;
     border-radius: 5px;
-    margin-top: 50px;
+    margin-top: 40px;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .landing-btn:hover {
