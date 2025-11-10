@@ -12,7 +12,7 @@ from pathlib import Path
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "/tmp/profile_pics")
+app.config['UPLOAD_FOLDER'] = os.environ.get("UPLOAD_FOLDER", "static/profile_pics")
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 db_uri = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri

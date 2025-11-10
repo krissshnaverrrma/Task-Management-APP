@@ -15,19 +15,19 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: transparent
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
     box-sizing: border-box;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
 }
 .logo-title a {
-    color: white;
+    color: #000000; 
     text-decoration: none;
-    font-size: 1.5em;
+    font-size: 1.8em; 
     font-weight: bold;
 }
 .nav-links {
@@ -48,7 +48,7 @@ body {
     gap: 8px;
 }
 .nav-links a:hover {
-    color: #000000; 
+    color: white; 
 }
 .bottom-bar {
     position: fixed;
@@ -88,6 +88,11 @@ body {
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
+}
+.landing-content h2,
+.landing-content h3 {
+    color: #000000;
+    text-shadow: none;
 }
 .landing-content p {
     font-size: 1.2em;
@@ -293,7 +298,7 @@ body {
     z-index: 5;
 }
 .custom-file-label {
-    background-color: #000000; 
+    background-color: #90c341;; 
     color: white;
     font-weight: bold;
     border-radius: 6px;
@@ -308,7 +313,7 @@ body {
     box-sizing: border-box; 
 }
 .custom-file-label:hover {
-    background-color: #333333;
+    background-color: #7aa53a;;
 }
 .remove-btn-small {
     background-color: #dc3545;
@@ -348,6 +353,11 @@ body {
 .save-discard-group input[type="submit"] {
     width: 65% !important; 
     margin: 0; 
+    background-color: #90c341; 
+    border: 1px solid #90c341;
+}
+.save-discard-group input[type="submit"]:hover {
+    background-color: #7aa53a;
 }
 .task-list { margin-top: 20px; }
 .task-item {
