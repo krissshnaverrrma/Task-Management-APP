@@ -15,19 +15,19 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: transparent
+    background: #222; 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     padding: 15px 40px;
     box-sizing: border-box;
     z-index: 100;
     border-bottom: none;
 }
 .logo-title a {
-    color: #000000; 
+    color: #000000;
     text-decoration: none;
-    font-size: 1.8em; 
+    font-size: 1.7em; 
     font-weight: bold;
 }
 .nav-links {
@@ -38,7 +38,7 @@ body {
     padding: 0;
 }
 .nav-links a {
-    color: white;
+    color: #000000
     text-decoration: none;
     font-weight: bold;
     font-size: 1em;
