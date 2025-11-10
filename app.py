@@ -1,9 +1,4 @@
 import os
-if not os.path.exists(app.config['UPLOAD_FOLDER']):
-    os.makedirs(app.config['UPLOAD_FOLDER'])
-import pathlib
-from pathlib import Path
-Path(app.config['UPLOAD_FOLDER']).mkdir(parents=True, exist_ok=True)
 from datetime import datetime, timedelta 
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
@@ -29,6 +24,8 @@ s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
 db_uri = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 bcrypt = Bcrypt(app)
