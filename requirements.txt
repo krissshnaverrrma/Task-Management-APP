@@ -1,0 +1,23 @@
+# Web Framework (Choose one based on your actual backend)
+# Flask is a common choice for smaller applications like a Task Manager
+Flask==2.3.3
+# If you used a bigger framework like Django, you'd list it here instead:
+# Django==4.2.7
+# Database Connectivity and ORM
+# For relational databases (e.g., PostgreSQL, MySQL, SQLite):
+SQLAlchemy==2.0.23
+# If you are using Flask with SQLAlchemy:
+Flask-SQLAlchemy==3.1.1
+# If you are connecting to a specific database (e.g., PostgreSQL):
+# psycopg2-binary==2.9.9
+# User Authentication and Security
+# For handling secure user sessions and hashing passwords (essential for a multi-user app):
+Werkzeug==3.0.1
+Flask-Login==0.6.3
+python-dotenv==1.0.0 # For securely managing environment variables (.env file)
+# Form Handling
+Flask-WTF==1.2.1 # For easier form creation and validation
+# Utilities
+Jinja2==3.1.2 # Template engine (usually installed with Flask)
+gunicorn==21.2.0 # Recommended for production deployment (not development)
+psycopg2-binary==2.9.9 # PostgreSQL database adapter for Python
