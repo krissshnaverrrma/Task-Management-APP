@@ -1,6 +1,6 @@
 # 🚀 Task Management System
 ## 📄 Description
-This is a robust **Task Management System (TMS)** designed to help individuals and teams manage their tasks efficiently. It provides a personalized, multi-tenant interface where users can view, create, update, and track their tasks, ensuring privacy and organization for each user.
+This is a **Task Management System (TMS)** designed to help individuals and teams manage their tasks efficiently. It provides a personalized, multi-tenant interface where users can view, create, update, and track their tasks, ensuring privacy and organization for each user.
 The application is hosted locally at **`http://127.0.0.1:5000/`** during development.
 ---
 ## ✨ Features
@@ -14,6 +14,8 @@ The application is hosted locally at **`http://127.0.0.1:5000/`** during develop
 ## 📸 Screenshots
 
 Here's a visual walkthrough of the main user features and application states:
+
+### 1.Landing page of the Task Management APP.
 
 ![Landing page of the Task Management APP.](assets/1.jpg)
 
@@ -61,7 +63,7 @@ The registration form for new users to create an account.
 ## 🛠️ Tech Stack
 * **Backend:** Python (**Flask**  given the `127.0.0.1:5000` default port).
 * **Frontend:** HTML, CSS, JavaScript.
-* **Database:** [**Specify your database here, e.g., SQLite, PostgreSQL, MySQL**]
+* **Database:** PostgreSQL
 ---
 ## 💻 Installation and Setup
 ### Prerequisites
@@ -100,5 +102,8 @@ For questions or feedback, please reach out to:
 * **Developer:** Krishna Verma
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Email:** [krishna1290verma@gmail.com]
+
+
+
 
 
