@@ -37,6 +37,7 @@ The interface for users to create a new task with a due date.
 
 ### 5. Modify the Task here
 The interface to to create and delete the task.
+
 ![Modal window to add a task view the task and delete the task.](/assets/10.jpg)
 
 ### 6. Your Profile
@@ -112,4 +113,3 @@ For questions or feedback, please reach out to:
 * **Developer:** Krishna Verma
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Email:** [krishna1290verma@gmail.com]
-
