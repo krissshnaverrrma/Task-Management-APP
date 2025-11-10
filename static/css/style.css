@@ -95,7 +95,7 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     max-width: 600px;
     margin: 10px auto;
-    line-height: 1.6;
+    line-height: 1.6;   
     margin-bottom: 40px; 
 }
 .landing-btn {
@@ -534,4 +534,42 @@ body {
 .form-link-button:hover {
     background-color: #333333; 
     color: white;
+}
+.main-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: transparent; 
+    padding: 15px 0;
+    border-top: 1px solid #333;
+    text-align: center;
+    z-index: 99;
+    font-size: 1.0em;
+}
+.main-footer p {
+    margin: 5px 0 0;
+    color: #ccc;
+}
+.social-links-footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+.footer-link-button {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border: 1px solid #000000; 
+    background-color: #000000;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.footer-link-button:hover {
+    background-color: #333333; 
+    border-color: #333333;
 }
