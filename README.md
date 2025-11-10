@@ -1,6 +1,6 @@
 # 🚀 Task Management System
 ## 📄 Description
-This is a robust **Task Management System (TMS)** designed to help individuals and teams manage their tasks efficiently. It provides a personalized, multi-tenant interface where users can view, create, update, and track their tasks, ensuring privacy and organization for each user.
+This is a **Task Management System (TMS)** designed to help individuals and teams manage their tasks efficiently. It provides a personalized, multi-tenant interface where users can view, create, update, and track their tasks, ensuring privacy and organization for each user.
 The application is hosted locally at **`http://127.0.0.1:5000/`** during development.
 ---
 ## ✨ Features
@@ -100,6 +100,7 @@ For questions or feedback, please reach out to:
 * **Developer:** Krishna Verma
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Email:** [krishna1290verma@gmail.com]
+
 
 
 
