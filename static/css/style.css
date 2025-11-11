@@ -4,13 +4,13 @@ body {
     background-position: center;
     background-attachment: fixed;
     font-family: Arial, sans-serif;
-    color: white; 
+    color: black; 
     margin: 0;
     padding: 0;
-    padding-top: 80px;  
+    padding-top: 80px; 
     padding-bottom: 70px; 
-    background-color: #1a1a1a; 
-    background-blend-mode: overlay; 
+    background-color: #f0f0f0; 
+    background-blend-mode: normal; 
 }
 .top-bar {
     position: fixed;
@@ -23,11 +23,11 @@ body {
     padding: 15px 40px;
     box-sizing: border-box;
     z-index: 100;
-    background-color: rgba(0, 0, 0, 0.7); 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
 }
 .logo-title a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 1.5em; 
     font-weight: bold;
@@ -43,7 +43,7 @@ body {
     padding: 0;
 }
 .nav-links a {
-    color: white; 
+    color: black; 
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2em;
@@ -53,22 +53,22 @@ body {
     gap: 1-px;
 }
 .nav-links a:hover {
-    color: black; 
+    color: #555; 
 }
 .bottom-bar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.7);
     height: 50px;
     z-index: 100;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 0.9em;
-    color: #ccc;
+    color: #333;
 }
 .nav-profile-img {
     width: 30px; 
@@ -76,7 +76,7 @@ body {
     object-fit: cover;
     border-radius: 50%; 
     margin-right: 8px;
-    border: 2px solid #000000; 
+    border: 2px solid #ccc; 
 }
 .nav-profile-link {
     display: flex; 
@@ -90,21 +90,21 @@ body {
 .landing-content h1 {
     font-size: 4em;
     font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
 }
 .landing-content p {
     font-size: 1.2em;
-    color: #eee;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
     max-width: 600px;
     margin: 10px auto;
     line-height: 1.6;   
     margin-bottom: 40px; 
 }
 .landing-btn {
-    background-color: #000000; 
+    background-color: #333333; 
     color: white;
     padding: 16px 40px; 
     text-decoration: none;
@@ -115,19 +115,18 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .landing-btn:hover {
-    background-color: #333333; 
+    background-color: #000000; 
     transform: scale(1.05);
 }
 .content {
     width: 90%;
     max-width: 500px; 
     margin: 40px auto;
-    /* Reduced padding from 40px to 30px */
     padding: 30px;
     position: relative;
-    background: rgba(0, 0, 0, 0.3); 
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+    background: rgba(255, 255, 255, 0.85); 
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
     border-radius: 10px; 
     backdrop-filter: blur(5px); 
     z-index: 10;
@@ -137,15 +136,14 @@ body {
 .content h3,
 .task-item span,
 .content a:not(.nav-links a, .landing-btn) { 
-    color: white; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
+    color: black; 
+    text-shadow: none; 
 }
 .content h3 {
     margin-top: 0;
     margin-bottom: 10px;
 }
-.task-item span { color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
-} 
+.task-item span { color: black; text-shadow: none; } 
 .profile-img-container {
     text-align: center;
     margin-bottom: 30px;
@@ -158,7 +156,7 @@ body {
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.7); 
+    border: 4px solid rgba(0, 0, 0, 0.7); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 .center-content input[type="text"],
@@ -172,9 +170,9 @@ body {
 .content input[type="date"],
 .content select 
 { 
-    color: white; 
-    background-color: rgba(255, 255, 255, 0.1); 
-    border: 1px solid rgba(255, 255, 255, 0.5); 
+    color: black; 
+    background-color: rgba(0, 0, 0, 0.05); 
+    border: 1px solid rgba(0, 0, 0, 0.3); 
     border-radius: 6px;
     padding: 10px; 
     width: 100%; 
@@ -183,7 +181,7 @@ body {
     display: block; 
 }
 .center-content select {
-    color: white !important; 
+    color: black !important; 
 }
 .center-content select option {
     color: black; 
@@ -205,14 +203,14 @@ body {
     margin-top: 10px;
     margin-bottom: 5px !important;
 }
-::placeholder { color: #ccc; opacity: 1; }
+::placeholder { color: #888; opacity: 1; }
 .content input:focus,
 .center-content input:focus,
 .center-content textarea:focus,
 .content select:focus 
 {
-    border-color: #000000; 
-    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25); 
+    border-color: #333333; 
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1); 
     outline: none;
 }
 .content input[type="submit"] {
@@ -248,7 +246,7 @@ body {
 .profile-form-grid label {
     text-align: left; 
     font-weight: normal; 
-    color: #eee; 
+    color: #333; 
     margin: 0; 
     display: block; 
 }
@@ -262,10 +260,10 @@ body {
     background-color: transparent !important;
     border: none !important; 
     box-shadow: none !important;
-    color: white !important; 
+    color: black !important; 
     font-weight: bold; 
     cursor: default;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
+    text-shadow: none; 
     padding: 12px 0;
     padding-left: 0;
     margin: 0;
@@ -273,14 +271,14 @@ body {
     box-sizing: border-box;
 }
 .center-content input.editable {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
     font-weight: normal;
     padding: 12px;
     cursor: text;
 }
 .center-content input[disabled] {
-    color: #ccc !important; 
+    color: #888 !important; 
     font-weight: normal;
 }
 .file-action-group {
@@ -377,8 +375,8 @@ body {
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.1); 
-    border: 1px solid rgba(255, 255, 255, 0.5); 
+    background-color: rgba(0, 0, 0, 0.05); 
+    border: 1px solid rgba(0, 0, 0, 0.2); 
 }
 .task-buttons a {
     text-decoration: none;
@@ -390,27 +388,27 @@ body {
     font-size: 0.9em;
 }
 .task-item.completed {
-    background-color: rgba(0, 0, 0, 0.3); 
+    background-color: rgba(200, 200, 200, 0.3); 
     opacity: 0.8;
 }
 .task-item.completed span {
     text-decoration: line-through;
-    color: #ccc; 
+    color: #555; 
     text-shadow: none;
 }
 .btn-complete { background-color: #28a745; }
 .btn-delete { background-color: #dc3545; }
 .task-footer {
     text-align: center;
-    padding-top: 20px; 
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     margin-top: 20px; 
 }
 .task-footer p {
     margin-top: 10px;
     margin-bottom: 0;
-    font-size: 0.9em;
-    color: #ccc;
+    font-size: 0.9em;=
+    color: #555;
     text-shadow: none; 
 }
 .social-links {
@@ -420,7 +418,7 @@ body {
     margin: 0;
 }
 .social-links a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 1.1em;
     font-weight: bold;
@@ -428,13 +426,13 @@ body {
     align-items: center;
     gap: 8px; 
     padding: 10px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 50px; 
     transition: all 0.3s ease;
 }
 .social-links a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: white;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: black;
     transform: translateY(-2px); 
 }
 .alert-container {
@@ -479,8 +477,8 @@ body {
     text-shadow: none;
 }
 .danger-zone p {
-    color: #eee; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    color: #333; 
+    text-shadow: none;
 }
 .delete-account-btn {
     background-color: #dc3545; 
@@ -507,8 +505,8 @@ body {
     margin-bottom: 15px;
 }
 .profile-header h1 {
-    color: white; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    color: black; 
+    text-shadow: none;
 }
 .edit-btn {
     background-color: #000000; 
@@ -566,16 +564,17 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9); 
+    background: rgba(255, 255, 255, 0.9); 
     padding-top: 20px;
     padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     text-align: center;
     z-index: 100; 
     font-size: 1.0em;
 }
 .main-footer p {
     margin: 5px 0 0;
-    color: #ccc;
+    color: #555;
     font-size: 0.9em; 
 }
 .social-links-footer {
@@ -585,12 +584,12 @@ body {
     margin-bottom: 8px;
 }
 .footer-link-button {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: bold;
     padding: 5px 10px;
-    border: 1px solid transparent; 
-    background-color: #000000;
+    border: 1px solid #000000; 
+    background-color: rgba(0, 0, 0, 0.05);
     border-radius: 4px;
     transition: background-color 0.2s;
     display: flex;
@@ -598,6 +597,7 @@ body {
     gap: 5px;
 }
 .footer-link-button:hover {
-    background-color: #333333; 
-    border-color: #333333;
+    background-color: #000000; 
+    color: white;
+    border-color: #000000;
 }
