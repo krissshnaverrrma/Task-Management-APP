@@ -7,7 +7,7 @@ body {
     color: white; 
     margin: 0;
     padding: 0;
-    padding-top: 80px; 
+    padding-top: 80px;  
     padding-bottom: 70px; 
     background-color: #1a1a1a; 
     background-blend-mode: overlay; 
@@ -122,6 +122,7 @@ body {
     width: 90%;
     max-width: 500px; 
     margin: 40px auto;
+    /* Reduced padding from 40px to 30px */
     padding: 30px;
     position: relative;
     background: rgba(0, 0, 0, 0.3); 
@@ -134,8 +135,6 @@ body {
 .content h1,
 .content h2,
 .content h3,
-.content p,
-.center-content label,
 .task-item span,
 .content a:not(.nav-links a, .landing-btn) { 
     color: white; 
@@ -145,7 +144,8 @@ body {
     margin-top: 0;
     margin-bottom: 10px;
 }
-.task-item span { color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); } 
+.task-item span { color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
+} 
 .profile-img-container {
     text-align: center;
     margin-bottom: 30px;
@@ -507,7 +507,7 @@ body {
     margin-bottom: 15px;
 }
 .profile-header h1 {
-    color: #000000; 
+    color: white; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 .edit-btn {
@@ -567,12 +567,11 @@ body {
     bottom: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.9); 
-    padding: 15px 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
     z-index: 100; 
     font-size: 1.0em;
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 .main-footer p {
     margin: 5px 0 0;
