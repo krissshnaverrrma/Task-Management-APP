@@ -32,6 +32,7 @@ The following images visually demonstrate the key features and user flow of the 
 | **Add/View Tasks** | Interface for creating, viewing, and managing tasks (CRUD). | `add_task.jpg` |
 | **User Profile** | Page showing current user details. | `update_profile.jpg` |
 | **Contact Me** | The dedicated contact form. | `contact_me.jpg` |
+---
 
 ## ✨ Features & Visual Demo
 This section visually demonstrates the key features and user flow of the Task Management System:
@@ -73,6 +74,7 @@ User Profile: The page showing current user details, including a profile picture
 Contact Me: The dedicated contact form for user feedback or support requests. 
 
 ![](assets/contact_me.jpg)
+
 ---
 ## 🛠️ Tech Stack
 * **Backend:** Python (**Flask** given the `127.0.0.1:5000` default port).
@@ -123,3 +125,4 @@ For questions or feedback, please reach out to:
 * **Linkedin** [https://www.linkedin.com/in/krishna-verma-43aa85315/]
 
 * **Email:** [krishna1290verma@gmail.com]
+
