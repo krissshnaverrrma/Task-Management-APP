@@ -3,14 +3,11 @@
 {% block content %}
 <div class="content">
     <div class="center-content">
-    <hr style="border-color: rgba(255,255,255,0.2); margin: 20px 0;">
-    <h3 style="text-align: center;">Add a New Task</h3>
+    <h3 style="text-align: center;">Add a New Task</h3> 
     <form method="POST" action="" style="margin-bottom: 20px; text-align: center;">  
         <input type="text" name="content" placeholder="What do you need to do?" required>
-        <div style="margin-top: 15px; margin-bottom: 15px;">
-            <label for="due_date" style="margin-right: 10px; color: white; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);">Due Date:</label>
-            <input type="date" name="due_date" style="padding: 5px; border-radius: 5px; border: 1px solid #ccc;">
-        </div>
+        <label for="due_date" class="date-label">Due Date:</label> 
+        <input type="date" name="due_date">    
         <input type="submit" value="Add Task">
     </form>
     <hr style="border-color: rgba(255,255,255,0.2); margin: 20px 0;">
@@ -37,4 +34,5 @@
             <p style="text-align: center;">You have no tasks. Add one above!</p>
         {% endif %}
     </div>
-</div> {% endblock %}
+</div>
+{% endblock %}
