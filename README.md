@@ -53,4 +53,5 @@ Access the running application in your browser at:
 For questions or feedback, please reach out to:
 * **Developer:** Krishna Verma
 * **GitHub:** [https://github.com/krissshnaverrrma]
+* **Linkedin** [https://www.linkedin.com/in/krishna-verma-43aa85315/]
 * **Email:** [krishna1290verma@gmail.com]
