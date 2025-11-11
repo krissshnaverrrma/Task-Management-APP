@@ -561,7 +561,7 @@ body {
     text-decoration: none;
     font-weight: bold;
     padding: 5px 10px;
-    border: 1px solid #000000; 
+    border: 1px solid transparent
     background-color: #000000;
     border-radius: 4px;
     transition: background-color 0.2s;
