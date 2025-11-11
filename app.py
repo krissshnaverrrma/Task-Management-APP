@@ -63,7 +63,7 @@ def inject_now():
     return {'now': datetime.utcnow}
 @app.route('/')
 def index():
-    return render_template('landing.html')
+    return render_template('index.html')
 @app.route('/tasks', methods=['GET', 'POST'])
 @login_required 
 def tasks():
@@ -84,8 +84,7 @@ def tasks():
             flash('Task added!', 'success')
         return redirect(url_for('tasks'))
     tasks = Task.query.filter_by(author=current_user).order_by(Task.id.desc()).all()
-    return render_template('index.html', tasks=tasks)
-
+    return render_template('mytasks.html', tasks=tasks)
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':

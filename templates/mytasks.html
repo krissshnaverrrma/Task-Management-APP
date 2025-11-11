@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}My Tasks{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="center-content">
+        <h3 style="text-align: center;">Add a New Task</h3> 
+        <form method="POST" action="" style="margin-bottom: 20px; text-align: center;">  
+            <input type="text" name="content" placeholder="What do you need to do?" required>
+            <label for="due_date" class="date-label">Due Date:</label> 
+            <input type="date" name="due_date">
+            <input type="submit" value="Add Task">
+        </form> 
+        <hr style="border-color: rgba(0, 0, 0, 0.1); margin: 20px 0;">
+        <h3 style="text-align: center;">Your Tasks</h3>
+        <div class="task-list">
+            {% if tasks %}
+                {% for task in tasks %}
+                    <div class="task-item {% if task.completed %}completed{% endif %}">
+                        <span>
+                            {{ task.content }} 
+                            {% if task.due_date %}
+                                (Due: {{ task.due_date.strftime('%b %d') }})
+                            {% endif %}
+                        </span>
+                        <div class="task-buttons">
+                            {% if not task.completed %}
+                                <a href="{{ url_for('complete_task', task_id=task.id) }}" class="btn-complete">Complete</a>
+                            {% endif %}
+                            <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn-delete">Delete</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p style="text-align: center;">You have no tasks. Add one above!</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

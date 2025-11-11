@@ -1,38 +1,24 @@
 {% extends "base.html" %}
-{% block title %}My Tasks - Task Management App{% endblock %}
+{% block title %}Home{% endblock %}
 {% block content %}
-<div class="content">
-    <div class="center-content">
-    <h3 style="text-align: center;">Add a New Task</h3> 
-    <form method="POST" action="" style="margin-bottom: 20px; text-align: center;">  
-        <input type="text" name="content" placeholder="What do you need to do?" required>
-        <label for="due_date" class="date-label">Due Date:</label> 
-        <input type="date" name="due_date">
-        <input type="submit" value="Add Task">
-    </form> 
-    <hr style="border-color: rgba(255,255,255,0.2); margin: 20px 0;">
-    <h3 style="text-align: center;">Your Tasks</h3>
-    <div class="task-list">
-        {% if tasks %}
-            {% for task in tasks %}
-                <div class="task-item {% if task.completed %}completed{% endif %}">
-                    <span>
-                        {{ task.content }} 
-                        {% if task.due_date %}
-                            (Due: {{ task.due_date.strftime('%b %d') }})
-                        {% endif %}
-                    </span>
-                    <div class="task-buttons">
-                        {% if not task.completed %}
-                            <a href="{{ url_for('complete_task', task_id=task.id) }}" class="btn-complete">Complete</a>
-                        {% endif %}
-                        <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn-delete">Delete</a>
-                    </div>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p style="text-align: center;">You have no tasks. Add one above!</p>
-        {% endif %}
-    </div>
-    </div>
+<div class="landing-content">
+    <h1>Task Management APP</h1>  
+    {% if current_user.is_authenticated %}
+        <p style="font-size: 1.6em; margin-bottom: 30px; font-weight: bold;">
+            Welcome Back, {{ current_user.fullname }}!
+        </p>
+        <p style="font-size: 1.1em; max-width: 600px; margin: 0 auto 50px auto;">
+            Are you ready to manage your tasks efficiently? Click the button below to view and manage your tasks.
+        </p>
+        <a href="{{ url_for('tasks') }}" class="landing-btn">
+            <i class="fas fa-tasks"></i> My Tasks
+        </a>
+    {% else %}
+        <p>It is a Multi User Task Management Web application in which user can create their own Tasks or Todos along with deadlines to complete them.</p>
+        <p>User can modify their Tasks and can change their profile details too.</p>
+        <a href="{{ url_for('login') }}" class="landing-btn">
+            <i class="fas fa-sign-in-alt"></i> Sign in
+        </a>
+    {% endif %}
+</div>
 {% endblock %}
