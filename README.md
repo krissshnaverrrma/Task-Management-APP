@@ -12,7 +12,7 @@ The application is hosted locally at **`http://127.0.0.1:5000/`** during develop
 * **Contact Me:** A dedicated contact mechanism.
 
 ---
-## 📸 Screenshots
+## 📸 Features and Visual Demo
 
 The following images visually demonstrate the key features and user flow of the application:
 
@@ -34,7 +34,7 @@ The following images visually demonstrate the key features and user flow of the 
 | **Contact Me** | The dedicated contact form. | `contact_me.jpg` |
 ---
 
-## ✨ Features & Visual Demo
+## ✨ Screenshots
 This section visually demonstrates the key features and user flow of the Task Management System:
 
 1. Authentication & Entry
@@ -125,4 +125,5 @@ For questions or feedback, please reach out to:
 * **Linkedin** [https://www.linkedin.com/in/krishna-verma-43aa85315/]
 
 * **Email:** [krishna1290verma@gmail.com]
+
 
