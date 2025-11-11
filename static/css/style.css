@@ -582,3 +582,25 @@ body{
     background-color: #333333; 
     border-color: #333333;
 }
+.button-link {
+    background-color: #000000; 
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 9px 20px;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    width: 100%; 
+    margin-top: 10px; 
+    display: block; 
+    box-sizing: border-box; 
+    text-align: center;
+    text-decoration: none; 
+}
+.button-link:hover {
+    background-color: #333333; 
+}
+.button-footer {
+    margin-top: 20px;
+}
