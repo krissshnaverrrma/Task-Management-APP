@@ -98,7 +98,7 @@ The dedicated contact form for user feedback or support requests.
 ### Local Setup
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/krissshnaverrrma/Task-Management-APP.git](https://github.com/krissshnaverrrma/Task-Management-APP.git]
+    git clone [https://github.com/krissshnaverrrma/Task-Management-APP.git]
     cd Multi-user-Task-Management-System
     ```
 2.  **Create and activate a virtual environment:**
@@ -133,6 +133,7 @@ For questions or feedback, please reach out to:
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Linkedin** [https://www.linkedin.com/in/krishna-verma-43aa85315/]
 * **Email:** [krishnav24-cs@sanskar.org]
+
 
 
 
