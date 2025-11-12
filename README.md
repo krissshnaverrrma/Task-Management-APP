@@ -23,7 +23,7 @@ The following images visually demonstrate the key features and user flow of the 
 | **Create Account** | The secure registration form. | `create_account.jpg` |
 | **Sign In** | The login screen for registered users. | `login.jpg` |
 | **Forgot Password** | Recovery mechanism via security question. | `forgot_password.jpg` |
-| **Logged Out** | Confirmation screen after signing out. | `logout.jpg` |
+| **Sign Out** | Confirmation screen after signing out. | `logout.jpg` |
 
 ### **2. Core Functionality**
 | Page Name | Description | Image File |
@@ -133,6 +133,7 @@ For questions or feedback, please reach out to:
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Linkedin** [https://www.linkedin.com/in/krishna-verma-43aa85315/]
 * **Email:** [krishnav24-cs@sanskar.org]
+
 
 
 
