@@ -38,40 +38,49 @@ The following images visually demonstrate the key features and user flow of the 
 This section visually demonstrates the key features and user flow of the Task Management System:
 
 1. Authentication & Entry
-Landing Page: The initial entry point for the application, providing a brief description and an entry button.
+Landing Page:
+The initial entry point for the application, providing a brief description and an entry button.
 
 ![](assets/landing.jpg)
 
-Create Account: The secure registration form, including setup for a security question. 
+Create Account: 
+The secure registration form, including setup for a security question. 
 
 ![](assets/create_account.jpg)
 
-Sign In: The login screen for registered users. 
+Sign In: 
+The login screen for registered users. 
 
 ![](assets/login.jpg)
 
-Forgot Password: The recovery mechanism used to prompt the user for their security question. 
+Forgot Password: 
+The recovery mechanism used to prompt the user for their security question. 
 
 ![](assets/forgot_password.jpg)
 
-Logged Out: The confirmation screen displayed after a successful sign-out. 
+Logged Out: 
+The confirmation screen displayed after a successful sign-out. 
 
 ![](assets/logout.jpg)
 
 2. Core Functionality
-Personalized Dashboard: The main welcome screen displayed immediately after a successful login.
+Personalized Dashboard:
+The main welcome screen displayed immediately after a successful login.
 
 ![](assets/defaultpage.jpg)
 
-Add/View Tasks (CRUD): The interface for creating new tasks with a due date, viewing existing tasks, and managing their status (Complete/Delete). 
+Add/View Tasks (CRUD): 
+The interface for creating new tasks with a due date, viewing existing tasks, and managing their status (Complete/Delete). 
 
 ![](assets/add_task.jpg)
 
-User Profile: The page showing current user details, including a profile picture, and offering an 'Edit Profile' function for updates. 
+User Profile: 
+The page showing current user details, including a profile picture, and offering an 'Edit Profile' function for updates. 
 
 ![](assets/update_profile.jpg)
 
-Contact Me: The dedicated contact form for user feedback or support requests. 
+Contact Me: 
+The dedicated contact form for user feedback or support requests. 
 
 ![](assets/contact_me.jpg)
 
@@ -123,7 +132,7 @@ For questions or feedback, please reach out to:
 * **Developer:** Krishna Verma
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Linkedin** [https://www.linkedin.com/in/krishna-verma-43aa85315/]
+* **Email:** [krishnav24-cs@sanskar.org]
 
-* **Email:** [krishna1290verma@gmail.com]
 
 
