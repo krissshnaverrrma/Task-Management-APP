@@ -89,7 +89,7 @@ The dedicated contact form for user feedback or support requests.
 * **Backend:** Python (**Flask** given the `127.0.0.1:5000` default port).
 * **Frontend:** HTML, CSS, JavaScript.
 * **Database:** PostgreSQL.
-* **Database ORM/Library:** (Add your specific ORM here, e.g., `SQLAlchemy`).
+* **Database ORM/Library:** `SQLAlchemy.`
 ---
 ## 💻 Installation and Setup
 ### Prerequisites
@@ -133,6 +133,7 @@ For questions or feedback, please reach out to:
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Linkedin** [https://www.linkedin.com/in/krishna-verma-43aa85315/]
 * **Email:** [krishnav24-cs@sanskar.org]
+
 
 
 
