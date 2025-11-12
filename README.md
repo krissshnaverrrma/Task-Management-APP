@@ -58,7 +58,7 @@ The recovery mechanism used to prompt the user for their security question.
 
 ![](assets/forgot_password.jpg)
 
-Logged Out: 
+Sign Out: 
 The confirmation screen displayed after a successful sign-out. 
 
 ![](assets/logout.jpg)
@@ -133,6 +133,7 @@ For questions or feedback, please reach out to:
 * **GitHub:** [https://github.com/krissshnaverrrma]
 * **Linkedin** [https://www.linkedin.com/in/krishna-verma-43aa85315/]
 * **Email:** [krishnav24-cs@sanskar.org]
+
 
 
 
