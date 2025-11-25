@@ -9,7 +9,7 @@ body{
     padding: 0;
     padding-top: 80px; 
     padding-bottom: 70px; 
-    background-color: #1a1a1a; 
+    background-color: transparent; 
     background-blend-mode: overlay; }
 .top-bar{
     position: fixed;
@@ -603,4 +603,5 @@ body{
 }
 .button-footer {
     margin-top: 20px;
+
 }
