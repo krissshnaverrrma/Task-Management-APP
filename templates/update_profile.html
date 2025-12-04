@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Update Profile - Task  Management APP{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="center-content">
+        <div class="profile-header">
+            <h1>Update Your Profile</h1>
+        </div>
+        <form method="POST" action="{{ url_for('update_profile') }}" enctype="multipart/form-data">  
+            <div class="profile-img-container">
+                {% set image_file = 'profile_pics/' + current_user.profile_image %}
+                <img id="profile-pic-preview" 
+                     src="{{ url_for('static', filename=image_file) }}?v={{ current_user.image_version }}" 
+                     alt="Profile Picture" class="profile-img">
+            </div>
+            <div id="file-inputs" class="file-action-group">
+                <div class="file-upload-container">
+                    <input type="file" id="picture" name="picture" accept=".jpg, .jpeg, .png" onchange="previewFile()">
+                    <label for="picture" class="custom-file-label">Choose New Photo</label> 
+                </div>
+                {% if current_user.profile_image != 'default.jpg' %}
+                    <button type="submit" name="remove_photo" class="remove-btn-small" value="true">Remove Photo</button>
+                {% endif %}
+            </div>
+            <div class="profile-form-grid">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" 
+                       value="{{ current_user.username }}"> 
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" 
+                       value="{{ current_user.fullname }}"> 
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" 
+                       value="{{ current_user.email }}" disabled>
+            </div>
+            <div id="save-discard-buttons" class="save-discard-group">
+                <a href="{{ url_for('profile') }}" class="discard-btn">
+                    Cancel
+                </a>
+                <input type="submit" name="save_changes" value="Save Changes"> 
+            </div>
+        </form>
+        <hr style="border-color: rgba(255,255,255,0.2); margin: 40px 0;">
+        <div id="danger-zone" class="danger-zone">
+            <form method="POST" action="{{ url_for('delete_account') }}" onsubmit="return confirm('Are you absolutely sure you want to delete your account? This is permanent.');">
+                <button type="submit" class="delete-account-btn">
+                    <i class="fas fa-trash-alt"></i> Delete My Account
+                </button>
+            </form>
+        </div>
+    </div>
+</div> 
+<script>
+    function previewFile() {
+        const preview = document.getElementById('profile-pic-preview');
+        const file = document.getElementById('picture').files[0];
+        const reader = new FileReader();
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+        reader.onloadend = () => {
+            preview.src = reader.result; 
+        }
+    }
+</script>
+{% endblock %}

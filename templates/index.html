@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="landing-content">
+    <h1>Task Management APP</h1>  
+    {% if current_user.is_authenticated %}
+        <p style="font-size: 1.6em; margin-bottom: 30px; font-weight: bold;">
+            Welcome Back, {{ current_user.fullname }}!
+        </p>
+        <p style="font-size: 1.1em; max-width: 600px; margin: 0 auto 50px auto;">
+            Are you ready to manage your tasks efficiently?
+        </p> 
+        <p style="font-size: 1.1em; max-width: 600px; margin: 0 auto 50px auto;">
+            Click the button below to view and manage your tasks.
+        </p>
+        <a href="{{ url_for('tasks') }}" class="landing-btn">
+            <i class="fas fa-tasks"></i> My Tasks
+        </a>
+    {% else %}
+        <p>It is a Multi User Task Management Web application in which user can create their own Tasks or Todos along with deadlines to complete them.</p>
+        <p>User can modify their Tasks and can change their profile details too.</p>
+        <a href="{{ url_for('login') }}" class="landing-btn">
+            <i class="fas fa-sign-in-alt"></i> Sign in
+        </a>
+    {% endif %}
+</div>
+{% endblock %}

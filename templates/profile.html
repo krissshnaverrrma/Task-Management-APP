@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}User Profile - Task Management App{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="center-content">
+        <div class="profile-header">
+            <h1>Your Profile</h1>
+        </div>
+        <form>
+            <div class="profile-img-container">
+                {% set image_file = 'profile_pics/' + current_user.profile_image %}
+                <img id="profile-pic-preview" 
+                     src="{{ url_for('static', filename=image_file) }}?v={{ current_user.image_version }}" 
+                     alt="Profile Picture" class="profile-img">
+            </div>
+            <div class="profile-form-grid">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" 
+                       value="{{ current_user.username }}" readonly> 
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" 
+                       value="{{ current_user.fullname }}" readonly> 
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" 
+                       value="{{ current_user.email }}" disabled>
+            </div>
+        </form>
+        <div class="edit-button-container">
+             <a href="{{ url_for('update_profile') }}" class="edit-btn" title="Edit Profile">
+                <i class="fas fa-pencil-alt"></i> Edit Profile
+            </a>
+        </div>
+        </div>
+</div> 
+{% endblock %}

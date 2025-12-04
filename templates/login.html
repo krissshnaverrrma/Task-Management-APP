@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Login - Task Management App{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="center-content">
+        <h1>Sign in to Your Account</h1>
+        <form method="POST" action="{{ url_for('login') }}">
+            <label for="login_identifier">Email or Username:</label>
+            <input type="text" id="login_identifier" name="login_identifier" placeholder="Your email or username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Your password" required>
+            <input type="submit" value="Sign In">
+        </form>
+        <div class="form-footer">
+            <p>
+                <a href="{{ url_for('forgot_password') }}" class="form-link-button">Forgot Password?</a>
+            </p>
+            <p>
+                Don't have an account? <a href="{{ url_for('register') }}" class="form-link-button">Sign up</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

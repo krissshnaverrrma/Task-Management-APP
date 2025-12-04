@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <title>{% block title %}{% endblock %} 📝 Task Management APP</title>
+</head>
+<body>
+    <nav class="top-bar">
+        <div class="logo-title">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='favicon.png') }}" alt="Logo" style="height: 30px; vertical-align: middle; margin-right: 8px;">
+                Task Management APP
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}"><i class="fas fa-home"></i> Home</a></li>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('tasks') }}"><i class="fas fa-tasks"></i> My Tasks</a></li>
+            <li><a href="{{ url_for('profile') }}" class="nav-profile-link">
+                <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}?v={{ current_user.image_version }}" alt="Profile" class="nav-profile-img">
+                Profile
+            </a>
+            </li>
+            <li><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}"><i class="fas fa-sign-in-alt"></i> Signin/Sign up</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('contact') }}"><i class="fas fa-envelope"></i> Contact Me</a></li>
+        </ul>
+    </nav>
+    <div class="alert-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    {% block content %}{% endblock %}
+    <footer class="main-footer">
+        <div class="social-links-footer">
+            <a href="https://github.com/krissshnaverrrma" target="_blank" class="footer-link-button"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/krishna-verma-43aa85315/" target="_blank" class="footer-link-button"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+        <p>&copy; 2025 Task Management App</p>
+    </footer>
+</body>
+</html>

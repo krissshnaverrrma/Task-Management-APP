@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Register - Task Management App{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="center-content">
+        <h1>Create Your Account</h1>
+        <form method="POST" action="{{ url_for('register') }}">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="A unique username" required>
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="E.g., Your Name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="E.g., you@example.com" required> 
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Choose a secure password" required>
+            <hr style="border-color: rgba(255,255,255,0.2); margin: 20px 0;">
+            <h3>Security Question Setup</h3>
+            <label for="security_question">Security Question:</label>
+            <select id="security_question" name="security_question" required>
+                <option value="">-- Select a question --</option>
+                <option value="pet">What was the name of your first pet?</option>
+                <option value="city">What city were you born in?</option>
+                <option value="most_visited_site">What is the most visited site on your browser?</option>
+            </select>
+            <label for="security_answer">Answer:</label>
+            <input type="password" id="security_answer" name="security_answer" placeholder="Provide a secure answer" required>
+            <input type="submit" value="Register">
+        </form>
+        <div class="form-footer">
+            <p>
+                Already have an account? 
+                <a href="{{ url_for('login') }}" class="form-link-button">Sign in</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
